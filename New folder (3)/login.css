@@ -1,0 +1,397 @@
+/* ================ Enhanced Base Styles ================ */
+:root {
+  --primary-color: #6a5acd; /* Royal purple */
+  --secondary-color: #ff7f50; /* Coral */
+  --accent-color: #4a6cf7;
+  --text-dark: #2c3e50;
+  --text-light: #f8f9fa;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --brush-color: #5e4b3a;
+  --brush-metal: #d4a76a;
+  --canvas-color: #fffdf5;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ================ Artistic Auth Container ================ */
+.auth-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(106, 90, 205, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(255, 127, 80, 0.1) 0%, transparent 30%),
+    var(--bg-gradient);
+  backdrop-filter: blur(2px);
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: fadeInUp 0.6s 0.2s forwards;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================ Artistic Tabs ================ */
+.auth-tabs {
+  display: flex;
+  position: relative;
+}
+
+.auth-tabs::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(106, 90, 205, 0.3) 30%, 
+    rgba(255, 127, 80, 0.3) 70%, 
+    transparent 100%);
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 18px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #777;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transition: var(--transition);
+}
+
+.auth-tab.active {
+  color: var(--primary-color);
+}
+
+.auth-tab.active::before {
+  width: 80%;
+}
+
+.auth-tab:hover {
+  color: var(--primary-color);
+  background: rgba(106, 90, 205, 0.05);
+}
+
+/* ================ Artistic Forms ================ */
+.auth-content {
+  padding: 40px;
+}
+
+.auth-form {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  transform: translateY(25px);
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px 0;
+  border: none;
+  border-bottom: 2px solid #eee;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: transparent;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom-color: var(--primary-color);
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  transform: translateY(0);
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.form-group::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transition: var(--transition);
+}
+
+.form-group:focus-within::after {
+  width: 100%;
+}
+
+/* ================ Artistic Buttons ================ */
+.auth-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(106, 90, 205, 0.4);
+}
+
+.auth-btn:active {
+  transform: translateY(1px);
+}
+
+.auth-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: 0.5s;
+}
+
+.auth-btn:hover::before {
+  left: 100%;
+}
+
+/* ================ Artistic Social Buttons ================ */
+.social-login {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social-login p {
+  color: #777;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.social-login p::before,
+.social-login p::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 30%;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    #eee 20%, 
+    #eee 80%, 
+    transparent 100%);
+  top: 50%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: #555;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.social-btn.google:hover {
+  background: #db4437;
+  color: white;
+}
+
+.social-btn.facebook:hover {
+  background: #4267B2;
+  color: white;
+}
+
+.social-btn.twitter:hover {
+  background: #1DA1F2;
+  color: white;
+}
+
+/* ================ Artistic Account Container ================ */
+.account-container {
+  display: none; /* Will be shown after login */
+  min-height: 100vh;
+  background: url('https://images.unsplash.com/photo-1579547945413-497e1b99dac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.account-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 253, 245, 0.9);
+}
+
+/* ================ Responsive Design ================ */
+@media (max-width: 768px) {
+  .auth-box {
+    max-width: 90%;
+    border-radius: 15px;
+  }
+  
+  .auth-content {
+    padding: 30px 20px;
+  }
+  
+  .auth-tab {
+    padding: 15px 10px;
+    font-size: 1rem;
+  }
+}
+
+/* ================ Special Effects ================ */
+/* Floating paint blobs in background */
+.auth-container::before,
+.auth-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.15;
+  z-index: -1;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+.auth-container::before {
+  width: 200px;
+  height: 200px;
+  background: var(--primary-color);
+  top: 20%;
+  left: 10%;
+}
+
+.auth-container::after {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary-color);
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, 50px);
+  }
+  100% {
+    transform: translate(-20px, -30px);
+  }
+}
+
+/* Paint stroke effect on focus */
+input:focus {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="4" viewBox="0 0 100 4"><path d="M0,2 Q25,4 50,2 T100,2" fill="none" stroke="%236a5acd" stroke-width="2" stroke-dasharray="5,3"/></svg>') bottom left no-repeat;
+  background-size: 100% 4px;
+}

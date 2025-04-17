@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery - Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="search.css">
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-header">
+            <h1>Discover Artwork</h1>
+            <button class="search-trigger" id="search-trigger">
+                <i class="fas fa-search"></i> Search Artworks
+            </button>
+            <div class="search-box" id="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search by title, artist, or style..." id="search-input">
+            </div>
+        </div>
+
+        <div class="search-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="painting">Paintings</button>
+            <button class="filter-btn" data-filter="sculpture">Sculptures</button>
+            <button class="filter-btn" data-filter="photography">Photography</button>
+            <button class="filter-btn" data-filter="digital">Digital Art</button>
+        </div>
+
+        <div class="search-results" id="search-results">
+            <!-- Results will be populated by JavaScript -->
+        </div>
+    </div>
+		<script src="search.js"></script>
+	</body>
+</html>

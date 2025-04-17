@@ -1,0 +1,124 @@
+:root {
+            --primary-color: #6a5acd;
+            --secondary-color: #ff7f50;
+            --text-dark: #2c3e50;
+            --text-light: #f8f9fa;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-header {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .search-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .search-trigger {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-trigger:hover {
+            background: #5a4abc;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .search-box.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 10px);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            padding-left: 50px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 1.2rem;
+        }
+
+        /* Rest of your existing CSS styles... */
+        .search-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 60px 0 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* ... (keep all your existing artwork card styles) ... */
